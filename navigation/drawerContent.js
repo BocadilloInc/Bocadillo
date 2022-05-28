@@ -71,8 +71,3 @@ const stylesDrawer = StyleSheet.create({
     } 
 
 });
-
-/* <View>      
-        <Drawer.Screen name="Principal" component={ScreenGeneral} />
-        <Drawer.Screen style={stylesDrawer.signOut} name="Cerrar Sesión" component={ScreenInicio} />
-      </View>  */

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button,Alert } from 'react-native';
+import {Text, View, TextInput, Button,Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconMC from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import styles from '../styles/sRegistroStyles';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+
 
 
 const ScreenRegistro = ( {navigation} ) => {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] =  React.useState('')
-  const [name,setName]= React.useState('');
-  const [phone,setTelefono]=React.useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [name,setName]= useState('');
+  const [phone,setTelefono]=useState('');
   let jwtToken;
 
   async function verificacion(){  

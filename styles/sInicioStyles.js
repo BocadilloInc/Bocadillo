@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
       marginTop:10,
     },
     Input:{
-      width:'90%'
+      width:'90%',
+      color:'#000000'
     }
   });
 
