@@ -34,7 +34,7 @@ const FirebaseState = props => {
                 }
             });
             //Tenemos resultados
-            dispatch({
+           dispatch({
                 type: OBTENER_PRODUCTOS_EXITO,
                 payload: platillos
             });

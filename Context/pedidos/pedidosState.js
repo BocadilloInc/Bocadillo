@@ -16,16 +16,21 @@ const PedidosState = props => {
     const [ state, dispatch ] = useReducer(pedidosReduce, initialState); 
 
     //Productos para ordenar
-    const seleccionarPlatillo = () =>{
-
+    const seleccionarPlatillo = platillo => { 
+        console.log(platillo);
+        dispatch({
+            typeof: SELECCIONAR_PRODUCTO
+            ,payload: platillo
+        })
     }
 
     return(
         <PedidosContext.Provider
             value={{
+                seleccionarPlatillo,
                 pedido: state.pedido,
                 platillo: state.platillo,
-                seleccionarPlatillo,
+                
             }}
 
         >
