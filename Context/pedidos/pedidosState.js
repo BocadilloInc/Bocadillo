@@ -1,15 +1,17 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect  } from "react";
 import pedidosReduce from "./pedidosReduce";
 import PedidosContext from "./pedidosContext";
-
-import { SELECCIONAR_PRODUCTO } from "../../types";
+import { SELECCIONAR_PRODUCTO, CONFIRMAR_ORDEN_PLATILLO, MOSTRAR_RESUMEN, ELIMINAR_PRODUCTO } from "../../types";
 
 const PedidosState = props => {
     //State Inicial
     
     const initialState = {
         pedido: [],
-        platillo: null
+        platillo: null,
+        total:0
+        
+        
     }
 
     //useReducer con dispatch para ejecutar las funciones
@@ -17,19 +19,47 @@ const PedidosState = props => {
 
     //Productos para ordenar
     const seleccionarPlatillo = platillo => { 
-        console.log(platillo);
         dispatch({
-            typeof: SELECCIONAR_PRODUCTO
+            type: SELECCIONAR_PRODUCTO
             ,payload: platillo
         })
+    }
+    //Cuando el usuario confirma el platillo
+    const guardarPedido = pedido =>{
+        dispatch({
+            type: CONFIRMAR_ORDEN_PLATILLO, 
+            payload: pedido
+        })
+    }
+
+
+    //Total a pagar en el carrito
+    const mostrarResumen = total =>{
+        dispatch({
+            type: MOSTRAR_RESUMEN,
+            payload: total
+        })
+    }
+
+    //Eliminar un articulo del carrito
+    const eliminarProducto = id => {
+       dispatch({
+           type: ELIMINAR_PRODUCTO,
+           payload: id
+       })
     }
 
     return(
         <PedidosContext.Provider
             value={{
-                seleccionarPlatillo,
-                pedido: state.pedido,
+               
                 platillo: state.platillo,
+                pedido: state.pedido,
+                total: state.total,
+                seleccionarPlatillo,
+                guardarPedido,
+                mostrarResumen,
+                eliminarProducto
                 
             }}
 

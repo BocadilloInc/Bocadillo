@@ -8,6 +8,7 @@ export default (state, action)=>{
                 menu: action.payload
             }
         default:
+            
             return state;
     }
 }

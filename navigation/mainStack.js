@@ -5,7 +5,7 @@ import screenInicio from '../screens/screenInicio';
 import screenRegistro from '../screens/screenRegistro';
 import screenGeneral from '../screens/screenGeneral';
 
-
+import BotonResumen from '../components/BotonResumen';
 import DetallePlatillo from '../screens/DetallePlatillo';
 import Menu from '../screens/Menu';
 import FormularioPlatillo from '../screens/FormularioPlatillo';
@@ -25,7 +25,9 @@ const MainStack = () => {
             <PedidosState>
                 <Stack.Navigator
                     screenOptions={{ 
-                        headerShown: false 
+                        headerStyle:{
+                            backgroundColor:'#FFDA00'
+                        } 
                     } }
                 >
                     <Stack.Screen 
@@ -42,7 +44,7 @@ const MainStack = () => {
                     />                
 
                     <Stack.Screen 
-                        name = 'ResumenPedidos'
+                        name = 'ResumenPedido'
                         component = { ResumenPedido }
                         options ={{
                             title: "Resumen del pedido"
@@ -66,7 +68,8 @@ const MainStack = () => {
                         name = 'Menu'
                         component = { Menu }
                         options ={{
-                            title: "Menu"
+                            title: "Menu",
+                            headerRight: props => <BotonResumen/> 
                         }}
                     />
                     
