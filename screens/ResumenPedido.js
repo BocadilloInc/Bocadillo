@@ -1,5 +1,4 @@
 //Nota: Para hacer botones con estilos usar TouchableOpacity
-
 import React, {useState, useContext, useEffect } from 'react'
 import {Text, Image,View, StyleSheet,StatusBar, TouchableOpacity, ScrollView, Button} from 'react-native';
 
@@ -8,12 +7,14 @@ import { useNavigation } from '@react-navigation/native';
 import PedidosContext from '../Context/pedidos/pedidosContext';
 import PedidosState from '../Context/pedidos/pedidosState';
 
+import firebase from '../firebase';
+
 
 
 function ResumenPedido() {
 
     const navigation = useNavigation();
-    const { pedido, total, mostrarResumen,  eliminarProducto} = useContext(PedidosContext);
+    const { pedido, total, mostrarResumen,  eliminarProducto , pedidoRealizado} = useContext(PedidosContext);
    
     
 
@@ -78,8 +79,28 @@ function ResumenPedido() {
         [
           {
             text: 'Confirmar',
-            onPress: () =>{
-              navigation.navigate("ProgresoPedido");
+            onPress: async () =>{
+             
+
+              //Objeto con toda la informacion de la pedido
+              const pedidoObj ={
+                tiempoentrega: 0,
+                completado: false,
+                total: Number(total),
+                orden: pedido,
+                creado: Date.now()
+
+              }
+              console.log(pedidoObj);
+              //Usar fire base
+          
+              try {
+                const pedido = await firebase.db.collection('ordenes').add(pedidoObj);
+                pedidoRealizado(pedido.id);
+                navigation.navigate("ProgresoPedido");
+              } catch (error) {
+                console.log(error);
+              }
             }
           },
           {
