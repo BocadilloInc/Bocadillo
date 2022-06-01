@@ -18,7 +18,6 @@ const PedidosState = props => {
             payload: id 
         })
     }
-
     //useReducer con dispatch para ejecutar las funciones
     const [ state, dispatch ] = useReducer(pedidosReduce, initialState); 
 
@@ -45,7 +44,6 @@ const PedidosState = props => {
             payload: total
         })
     }
-
     //Eliminar un articulo del carrito
     const eliminarProducto = id => {
        dispatch({
@@ -53,11 +51,9 @@ const PedidosState = props => {
            payload: id
        })
     }
-
     return(
         <PedidosContext.Provider
             value={{
-               
                 platillo: state.platillo,
                 pedido: state.pedido,
                 total: state.total,
@@ -66,10 +62,8 @@ const PedidosState = props => {
                 guardarPedido,
                 mostrarResumen,
                 eliminarProducto,
-                pedidoRealizado
-                
+                pedidoRealizado,
             }}
-
         >
             {props.children}
         </PedidosContext.Provider>

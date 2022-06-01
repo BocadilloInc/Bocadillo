@@ -13,7 +13,6 @@ import NuevaOrden from '../screens/NuevaOrden';
 import ProgresoPedido from '../screens/ProgresoPedido';
 import ResumenPedido from '../screens/ResumenPedido';
 
-
 import PedidosState from '../Context/pedidos/pedidosState';
 
 
@@ -21,15 +20,11 @@ const Stack = createNativeStackNavigator()
 
 const MainStack = () => {
     return (
-        
             <PedidosState>
                 <Stack.Navigator
                     screenOptions={{ 
-                        headerStyle:{
-                            backgroundColor:'#FFDA00'
-                        } 
-                    } }
-                >
+                        headerShown: false 
+                    } }>
                     <Stack.Screen 
                         name = 'Inicio'
                         component = { screenInicio }
