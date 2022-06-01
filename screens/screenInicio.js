@@ -48,7 +48,7 @@ const ScreenInicio = ( {navigation} ) =>{
           <Button 
             title='Iniciar Sesion' 
             color='#cb0519' 
-            onPress = { () => { navigation.navigate('NuevaOrden') }}
+            onPress = { () => { IniciarSesion() }}
             />
   
           <Text style={styles.textoSecundario}>¿No tienes cuenta? <Text style={{color: '#cb0519'}} onPress = { () => { navigation.navigate('Registro') }}>Registrate Aquí</Text></Text>
